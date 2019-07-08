@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutKata", "CheckoutKata\CheckoutKata.csproj", "{4F6D5210-2361-404E-89B4-2F22BFAE22D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutOperationsLibrary", "CheckoutOpereationsLibrary\CheckoutOperationsLibrary.csproj", "{660064B4-1888-46A7-8BB1-1FEAFF293429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutOperationsTestLibrary", "CheckoutOperationsTestLibrary\CheckoutOperationsTestLibrary.csproj", "{7CE23697-F1DE-42B7-9B32-18DEB42C31DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4F6D5210-2361-404E-89B4-2F22BFAE22D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F6D5210-2361-404E-89B4-2F22BFAE22D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F6D5210-2361-404E-89B4-2F22BFAE22D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660064B4-1888-46A7-8BB1-1FEAFF293429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660064B4-1888-46A7-8BB1-1FEAFF293429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660064B4-1888-46A7-8BB1-1FEAFF293429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660064B4-1888-46A7-8BB1-1FEAFF293429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE23697-F1DE-42B7-9B32-18DEB42C31DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE23697-F1DE-42B7-9B32-18DEB42C31DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE23697-F1DE-42B7-9B32-18DEB42C31DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE23697-F1DE-42B7-9B32-18DEB42C31DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
