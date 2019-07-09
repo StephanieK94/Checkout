@@ -180,5 +180,22 @@ namespace CheckoutOperationsTestLibrary
             Assert.AreEqual(90, actualTotal);
         }
 
+        [Test]
+        public void GivenMixedListOfProduct_ReturnsDiscountedValueOf355()
+        {
+            var productList = new Dictionary<char, int>();
+            productList.Add('A', 50);
+            productList.Add('B', 30);
+            productList.Add('C', 20);
+            productList.Add('D', 15);
+
+            var customerList = new List<char>() { 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'B','C','D' };
+
+            var checkoutOperator = new Operator();
+            var actualTotal = checkoutOperator.GetCustomerTotal(productList, customerList);
+
+            Assert.AreEqual(335, actualTotal);
+        }
+
     }
 }
