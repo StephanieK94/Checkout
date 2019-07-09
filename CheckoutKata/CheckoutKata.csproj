@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CheckoutOpereationsLibrary\CheckoutOperationsLibrary.csproj">
+      <Project>{660064b4-1888-46a7-8bb1-1feaff293429}</Project>
+      <Name>CheckoutOperationsLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
