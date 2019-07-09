@@ -9,6 +9,25 @@ namespace CheckoutOperationsTestLibrary
     public class OperationsTests
     {
         [Test]
+        public void GivenCustomerPurchases_ReturnValidItems()
+        {
+            var productList = new Dictionary<char, int>();
+            productList.Add('A', 50);
+            productList.Add('B', 30);
+            productList.Add('C', 20);
+            productList.Add('D', 15);
+
+            var customerPurchasesList = new List<char>() { 'A', 'A', 'B', 'C', 'D', 'E' };
+
+            var checkoutOperator = new Operator();
+            List<char> validPurchases = checkoutOperator.GetValidProducts(customerPurchasesList, productList);
+
+            var expected = new List<char>() { 'A', 'A', 'B', 'C', 'D' };
+
+            Assert.AreEqual(expected, validPurchases);
+        }
+
+        [Test]
         public void GivenCustomerListOfOneProduct_GetTotalCustomerPrice()
         {
             var productList = new Dictionary<char, int>();
@@ -17,10 +36,7 @@ namespace CheckoutOperationsTestLibrary
             productList.Add('C', 20);
             productList.Add('D', 15);
 
-            var customerPurchasesList = new List<char>()
-            {
-                'A',
-            };
+            var customerPurchasesList = new List<char>() { 'A' };
 
             var checkoutOperator = new Operator();
             int customerTotal = checkoutOperator.GetCustomerTotal(productList, customerPurchasesList);
@@ -37,11 +53,7 @@ namespace CheckoutOperationsTestLibrary
             productList.Add('C', 20);
             productList.Add('D', 15);
 
-            var customerPurchasesList = new List<char>()
-            {
-                'A',
-                'B',
-            };
+            var customerPurchasesList = new List<char>(){'A','B',};
 
             var checkoutOperator = new Operator();
             int customerTotal = checkoutOperator.GetCustomerTotal(productList, customerPurchasesList);
@@ -58,11 +70,7 @@ namespace CheckoutOperationsTestLibrary
             productList.Add('C', 20);
             productList.Add('D', 15);
 
-            var customerPurchasesList = new List<char>()
-            {
-                'A',
-                'A',
-            };
+            var customerPurchasesList = new List<char>() {'A','A' };
 
             var checkoutOperator = new Operator();
             int customerTotal = checkoutOperator.GetCustomerTotal(productList, customerPurchasesList);
@@ -71,48 +79,7 @@ namespace CheckoutOperationsTestLibrary
         }
 
         [Test]
-        public void GivenCustomerListOfThreeOfProductA_GetTotalCustomerPriceOf100()
-        {
-            var productList = new Dictionary<char, int>();
-            productList.Add('A', 50);
-            productList.Add('B', 30);
-            productList.Add('C', 20);
-            productList.Add('D', 15);
-
-            var customerPurchasesList = new List<char>()
-            {
-                'A',
-                'A',
-                'A',
-            };
-
-            var checkoutOperator = new Operator();
-            int customerTotal = checkoutOperator.GetCustomerTotal(productList, customerPurchasesList);
-
-            Assert.AreEqual(130, customerTotal);
-        }
-
-        [Test]
-        public void GivenCustomerPurchases_ReturnValidItems()
-        {
-            var productList = new Dictionary<char, int>();
-            productList.Add('A', 50);
-            productList.Add('B', 30);
-            productList.Add('C', 20);
-            productList.Add('D', 15);
-
-            var customerPurchasesList = new List<char>() {'A','A','B','C','D','E'};
-
-            var checkoutOperator = new Operator();
-            List<char> validPurchases = checkoutOperator.GetValidProducts(customerPurchasesList, productList);
-
-            var expected = new List<char>() { 'A', 'A', 'B', 'C', 'D' };
-
-            Assert.AreEqual(expected, validPurchases);
-        }
-
-        [Test]
-        public void GivenCustomerPurchasesOfA_WhenCalculatingTotal_ReturnDiscountedValue()
+        public void GivenCustomerPurchasesOfA_WhenCalculatingTotal_ReturnDiscountedValueOf130()
         {
             var productList = new Dictionary<char, int>();
             productList.Add('A', 50);
@@ -129,7 +96,7 @@ namespace CheckoutOperationsTestLibrary
         }
 
         [Test]
-        public void Given6PurchasesOfA_WhenCalculatingTotal_ReturnDiscountedValue()
+        public void Given6PurchasesOfA_WhenCalculatingTotal_ReturnDiscountedValueOf260()
         {
             var productList = new Dictionary<char, int>();
             productList.Add('A', 50);
@@ -145,23 +112,39 @@ namespace CheckoutOperationsTestLibrary
             Assert.AreEqual(260, actualTotal);
         }
 
-        //[Test]
-        //public void GivenCustomerPurchasesOfB_WhenCalculatingTotal_ReturnDiscountedValue()
-        //{
-        //    var productList = new Dictionary<char, int>();
-        //    productList.Add('A', 50);
-        //    productList.Add('B', 30);
-        //    productList.Add('C', 20);
-        //    productList.Add('D', 15);
+        [Test]
+        public void Given2PurchasesOfB_WhenCalculatingTotal_ReturnDiscountedValueOf45()
+        {
+            var productList = new Dictionary<char, int>();
+            productList.Add('A', 50);
+            productList.Add('B', 30);
+            productList.Add('C', 20);
+            productList.Add('D', 15);
 
-        //    var customerList = new List<char>() { 'B','B' };
+            var customerList = new List<char>() { 'B', 'B' };
 
-        //    var checkoutOperator = new Operator();
-        //    var actualTotal = checkoutOperator.GetCustomerTotal(productList, customerList);
-        //    actualTotal = checkoutOperator.ApplyDiscounts(customerList);
+            var checkoutOperator = new Operator();
+            var actualTotal = checkoutOperator.GetCustomerTotal(productList, customerList);
 
-        //    Assert.AreEqual(45, actualTotal);
-        //}
+            Assert.AreEqual(45, actualTotal);
+        }
+
+        [Test]
+        public void Given4PurchasesOfB_WhenCalculatingTotal_ReturnDiscountedValueOf90()
+        {
+            var productList = new Dictionary<char, int>();
+            productList.Add('A', 50);
+            productList.Add('B', 30);
+            productList.Add('C', 20);
+            productList.Add('D', 15);
+
+            var customerList = new List<char>() { 'B', 'B', 'B', 'B' };
+
+            var checkoutOperator = new Operator();
+            var actualTotal = checkoutOperator.GetCustomerTotal(productList, customerList);
+
+            Assert.AreEqual(90, actualTotal);
+        }
 
     }
 }
