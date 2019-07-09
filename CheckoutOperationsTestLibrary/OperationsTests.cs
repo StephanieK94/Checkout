@@ -20,34 +20,23 @@ namespace CheckoutOperationsTestLibrary
             Assert.AreEqual(1, productList.Count);
         }
 
-        [Test]
-        public void GivenProductListOfOne_GetTotalPrice()
-        {
-            var productList = new Dictionary<char, int>();
-            productList.Add('A', 50);
+        //[Test]
+        //public void GivenFullProductDictionary_GetTotalCostOfPriceList()
+        //{
+        //    var productList = new Dictionary<char, int>();
+        //    productList.Add('A', 50);
+        //    productList.Add('B', 30);
+        //    productList.Add('C', 20);
+        //    productList.Add('D', 15);
 
-            var checkoutOperator = new Operator();
-            int totalPrice = checkoutOperator.GetCustomerTotal(productList);
+        //    var checkoutOperator = new Operator();
+        //    int totalPrice = checkoutOperator.GetCustomerTotal(productList);
 
-            Assert.AreEqual(50, totalPrice);
-        }
-
-        [Test]
-        public void GivenProductListOfTwo_GetTotalCustomerPrice()
-        {
-            var productList = new Dictionary<char, int>();
-            productList.Add('A', 50);
-            productList.Add('B', 30);
-
-            var checkoutOperator = new Operator();
-            int totalPrice = checkoutOperator.GetCustomerTotal(productList);
-
-            Assert.AreEqual(80, totalPrice);
-        }
-
+        //    Assert.AreEqual(115, totalPrice);
+        //}
 
         [Test]
-        public void GivenFullProductDictionary_GetTotalCostOfPriceList()
+        public void GivenCustomerListOfOneProdcut_GetTotalCustomerPrice()
         {
             var productList = new Dictionary<char, int>();
             productList.Add('A', 50);
@@ -55,10 +44,15 @@ namespace CheckoutOperationsTestLibrary
             productList.Add('C', 20);
             productList.Add('D', 15);
 
-            var checkoutOperator = new Operator();
-            int totalPrice = checkoutOperator.GetCustomerTotal(productList);
+            var customerPurchasesList = new List<char>()
+            {
+                'A',
+            };
 
-            Assert.AreEqual(115, totalPrice);
+            var checkoutOperator = new Operator();
+            int customerTotal = checkoutOperator.GetCustomerTotal(productList, customerPurchasesList);
+
+            Assert.AreEqual(50, customerTotal);
         }
     }
 }
