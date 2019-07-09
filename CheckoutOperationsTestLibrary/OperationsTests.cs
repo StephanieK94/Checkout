@@ -17,12 +17,12 @@ namespace CheckoutOperationsTestLibrary
             productList.Add('C', 20);
             productList.Add('D', 15);
 
-            var customerPurchasesList = new List<char>() { 'A', 'A', 'B', 'C', 'D', 'E' };
+            var customerPurchasesList = new List<char>() { 'a','b','c','d' };
 
             var checkoutOperator = new Operator();
             List<char> validPurchases = checkoutOperator.GetValidProducts(customerPurchasesList, productList);
 
-            var expected = new List<char>() { 'A', 'A', 'B', 'C', 'D' };
+            var expected = new List<char>() { 'A', 'B', 'C', 'D' };
 
             Assert.AreEqual(expected, validPurchases);
         }
