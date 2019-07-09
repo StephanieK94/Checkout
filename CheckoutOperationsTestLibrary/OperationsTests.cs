@@ -15,7 +15,7 @@ namespace CheckoutOperationsTestLibrary
             var price = 50;
 
             var checkoutOperator = new Operator();
-            var productList = checkoutOperator.GetProductDictionary(product, price);
+            var productList = checkoutOperator.AddToProductDictionary(product, price);
 
             Assert.AreEqual(1, productList.Count);
         }
@@ -84,23 +84,15 @@ namespace CheckoutOperationsTestLibrary
         }
 
         [Test]
-        public void GivenCustomerPurchaseList_ReturnsCountOfSingleProduct()
+        public void GivenCountOfProductA_ReturnsFalseToDiscountValidity()
         {
-            var productList = new Dictionary<char, int>();
-            productList.Add('A', 50);
-            productList.Add('B', 30);
-            productList.Add('C', 20);
-            productList.Add('D', 15);
-
-            var customerPurchasesList = new List<char>()
-            {
-                'A',
-            };
+            var countOfProduct = 1;
+            var product = 'A';
 
             var checkoutOperator = new Operator();
-            int countOfProduct = checkoutOperator.GetCountOfSingleProduct(customerPurchasesList);
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProduct, product);
 
-            Assert.AreEqual(1, countOfProduct);
+            Assert.False(discountIsValid);
         }
     }
 }
