@@ -44,5 +44,21 @@ namespace CheckoutOperationsTestLibrary
 
             Assert.AreEqual(80, totalPrice);
         }
+
+
+        [Test]
+        public void GivenFullProductDictionary_GetTotalCostOfPriceList()
+        {
+            var productList = new Dictionary<char, int>();
+            productList.Add('A', 50);
+            productList.Add('B', 30);
+            productList.Add('C', 20);
+            productList.Add('D', 15);
+
+            var checkoutOperator = new Operator();
+            int totalPrice = checkoutOperator.GetCustomerTotal(productList);
+
+            Assert.AreEqual(115, totalPrice);
+        }
     }
 }
