@@ -86,11 +86,23 @@ namespace CheckoutOperationsTestLibrary
         [Test]
         public void GivenCountOf1ForProductA_ReturnsFalseToDiscountValidity()
         {
-            var countOfProduct = 1;
+            var countOfProductA = 1;
             var product = 'A';
 
             var checkoutOperator = new Operator();
-            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProduct);
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProductA, product);
+
+            Assert.False(discountIsValid);
+        }
+
+        [Test]
+        public void GivenCountOf2ForProductA_ReturnsTrueToDiscountValidity()
+        {
+            var countOfProductA = 2;
+            var product = 'A';
+
+            var checkoutOperator = new Operator();
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProductA, product);
 
             Assert.False(discountIsValid);
         }
@@ -99,9 +111,34 @@ namespace CheckoutOperationsTestLibrary
         public void GivenCountOf3ForProductA_ReturnsTrueToDiscountValidity()
         {
             var countOfProductA = 3;
+            var product = 'A';
 
             var checkoutOperator = new Operator();
-            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProductA);
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProductA, product);
+
+            Assert.True(discountIsValid);
+        }
+
+        [Test]
+        public void GivenCountOf1ForProductB_ReturnsFalseToDiscountValidity()
+        {
+            var countOfProductB = 1;
+            var product = 'B';
+
+            var checkoutOperator = new Operator();
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProductB, product);
+
+            Assert.False(discountIsValid);
+        }
+
+        [Test]
+        public void GivenCountOf2ForProductB_ReturnsTrueToDiscountValidity()
+        {
+            var countOfProductB = 2;
+            var product = 'B';
+
+            var checkoutOperator = new Operator();
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProductB, product);
 
             Assert.True(discountIsValid);
         }
