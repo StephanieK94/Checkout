@@ -96,6 +96,23 @@ namespace CheckoutOperationsTestLibrary
         }
 
         [Test]
+        public void Given4PurchasesOfA_WhenCalculatingTotal_ReturnDiscountedValueOf180()
+        {
+            var productList = new Dictionary<char, int>();
+            productList.Add('A', 50);
+            productList.Add('B', 30);
+            productList.Add('C', 20);
+            productList.Add('D', 15);
+
+            var customerList = new List<char>() { 'A', 'A', 'A', 'A',  };
+
+            var checkoutOperator = new Operator();
+            var actualTotal = checkoutOperator.GetCustomerTotal(productList, customerList);
+
+            Assert.AreEqual(180, actualTotal);
+        }
+
+        [Test]
         public void Given6PurchasesOfA_WhenCalculatingTotal_ReturnDiscountedValueOf260()
         {
             var productList = new Dictionary<char, int>();
@@ -127,6 +144,23 @@ namespace CheckoutOperationsTestLibrary
             var actualTotal = checkoutOperator.GetCustomerTotal(productList, customerList);
 
             Assert.AreEqual(45, actualTotal);
+        }
+
+        [Test]
+        public void Given3PurchasesOfB_WhenCalculatingTotal_ReturnDiscountedValueOf75()
+        {
+            var productList = new Dictionary<char, int>();
+            productList.Add('A', 50);
+            productList.Add('B', 30);
+            productList.Add('C', 20);
+            productList.Add('D', 15);
+
+            var customerList = new List<char>() { 'B', 'B', 'B' };
+
+            var checkoutOperator = new Operator();
+            var actualTotal = checkoutOperator.GetCustomerTotal(productList, customerList);
+
+            Assert.AreEqual(75, actualTotal);
         }
 
         [Test]
