@@ -84,15 +84,26 @@ namespace CheckoutOperationsTestLibrary
         }
 
         [Test]
-        public void GivenCountOfProductA_ReturnsFalseToDiscountValidity()
+        public void GivenCountOf1ForProductA_ReturnsFalseToDiscountValidity()
         {
             var countOfProduct = 1;
             var product = 'A';
 
             var checkoutOperator = new Operator();
-            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProduct, product);
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProduct);
 
             Assert.False(discountIsValid);
+        }
+
+        [Test]
+        public void GivenCountOf3ForProductA_ReturnsTrueToDiscountValidity()
+        {
+            var countOfProductA = 3;
+
+            var checkoutOperator = new Operator();
+            bool discountIsValid = checkoutOperator.IsValidForDiscount(countOfProductA);
+
+            Assert.True(discountIsValid);
         }
     }
 }
